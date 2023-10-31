@@ -1,4 +1,4 @@
-import { AiOutlineMenu } from "react-icons/ai";
+import { FiMenu } from "react-icons/fi";
 import { GoSearch } from "react-icons/go";
 import { TfiClose } from "react-icons/tfi";
 import { IoMdMic } from "react-icons/io";
@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-14 h-14 bg-[#ffffff] opacity-95 sticky top-0 z-50">
             <div className="flex gap-8 items-center text-2xl">
                 <div>
-                    <AiOutlineMenu style={{ fill: 'black' }} />
+                    <FiMenu color="black" />
                 </div>
                 <Link to="/">
                     <div className="flex gap-1 items-center justify-center">
@@ -48,7 +48,7 @@ const Navbar = () => {
                 <BsCameraVideo style={{ fill: 'black' }} />
                 <div className="relative">
                     <BsBell style={{ fill: 'black' }} />
-                    <span className="absolute bottom-2 left-2 text-xs bg-red-600 rounded-full px-1">
+                    <span className="absolute bottom-2 left-2 text-xs bg-red-600 rounded-full px-1 text-white">
                         9+
                     </span>
                 </div>
