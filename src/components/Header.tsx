@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ytLogo from "../assets/yt_logo.png";
 import ytLogoMobile from "../assets/yt_logo_mobile.png"
 
-import { FiMenu } from "react-icons/fi";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { GoSearch } from "react-icons/go";
 import { IoMdMic } from "react-icons/io";
 import { CgClose } from "react-icons/cg";
@@ -36,7 +36,7 @@ const Header = () => {
     const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
 
     return (
-        <div className="flex justify-between items-center px-14 h-14 bg-[#ffffff]  opacity-95 sticky top-0 z-10">
+        <div className="flex justify-between items-center py-3 px-[10px] md:px-8 h-14 bg-[#ffffff]  opacity-95 sticky top-0 z-10">
             {loading && <Loader />}
 
             <div className="flex h-5 items-center">
@@ -47,7 +47,7 @@ const Header = () => {
                                 mobileMenu ? (
                                     <CgClose color="black" size={25} />
                                 ) : (
-                                    <FiMenu color="black" size={25} />
+                                    <RxHamburgerMenu color="black" size={25} />
                                 )
                             }
                         </div>
@@ -89,12 +89,12 @@ const Header = () => {
                         <GoSearch className="text-xl" />
                     </button>
                 </div>
-                <div className="text-xl p-3 rounded-full bg-[#0000000D] hover:bg-[#0000001a] cursor-pointer">
+                <div className="text-xl hidden md:block p-3 rounded-full bg-[#0000000D] hover:bg-[#0000001a] cursor-pointer">
                     <IoMdMic style={{ fill: 'black' }} />
                 </div>
             </div>
 
-            <div className="flex gap-3 items-center text-xl">
+            <div className="hidden md:flex gap-3 items-center text-xl">
                 <div className="text-xl p-3 rounded-full hover:bg-[#0000001a] cursor-pointer">
                     <RiVideoAddLine style={{ fill: 'black' }} />
                 </div>

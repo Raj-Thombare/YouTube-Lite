@@ -10,8 +10,8 @@ const defaultState = {
   setLoading: (value: boolean) => { },
   searchResults: false,
   setSearchResults: (value: boolean) => { },
-  selectCategories: "New",
-  setSelectCategories: (value: string) => { },
+  selectedCategory: "New",
+  setSelectedCategory: (value: string) => { },
   mobileMenu: false,
   setMobileMenu: (value: boolean) => { },
 };
@@ -21,21 +21,21 @@ const DataContext = createContext(defaultState);
 export const DataContextProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<boolean>(false);
-  const [selectCategories, setSelectCategories] = useState<string>("New");
+  const [selectedCategory, setSelectedCategory] = useState<string>("New");
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
-  useEffect(() => {
-    fetchSelectedCategoryData(selectCategories);
-  }, [selectCategories]);
+  // useEffect(() => {
+  //   fetchSelectedCategoryData(selectCategories);
+  // }, [selectCategories]);
 
-  const fetchSelectedCategoryData = (query: String) => {
-    setLoading(true);
-    fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
-      console.log(contents);
-      setSearchResults(contents)
-      setLoading(false);
-    });
-  };
+  // const fetchSelectedCategoryData = (query: String) => {
+  //   setLoading(true);
+  //   fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
+  //     console.log(contents);
+  //     setSearchResults(contents)
+  //     setLoading(false);
+  //   });
+  // };
 
   return (
     <DataContext.Provider
@@ -44,8 +44,8 @@ export const DataContextProvider = ({ children }: Props) => {
         setLoading,
         searchResults,
         setSearchResults,
-        selectCategories,
-        setSelectCategories,
+        selectedCategory,
+        setSelectedCategory,
         mobileMenu,
         setMobileMenu,
       }}

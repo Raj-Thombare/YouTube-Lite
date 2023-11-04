@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import { Header, Sidebar } from './components';
+import { Header, Sidebar, Feed } from './components';
 
 import { DataContextProvider } from './context/contextApi'
 
@@ -10,6 +10,7 @@ const App = () => {
     <DataContextProvider>
       <div className='flex flex-col h-full'>
         <Header />
+        <Feed />
       </div>
       {/* <Routes>
         <Route path="/searchResult/:searchQuery" element={<Home />} />

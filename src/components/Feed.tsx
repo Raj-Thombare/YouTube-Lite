@@ -12,4 +12,4 @@ const Feed = (props: Props) => {
     )
 }
 
-export default Feed
+export default Feed;
