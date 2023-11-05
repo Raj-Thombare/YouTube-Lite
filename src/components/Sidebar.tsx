@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
 
-    const { selectedCategory, setSelectedCategory, mobileMenu, openSidebar } = useApiData();
+    const { selectedCategory, setSelectedCategory, openSidebar } = useApiData();
 
     const navigate = useNavigate();
 
@@ -134,7 +134,7 @@ const Sidebar = () => {
 
     return (
         <>
-            {openSidebar && <div className='hidden md:block w-[240px] h-full absolute md:relative z-10 ml-4 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
+            {openSidebar && <div className='block w-[100px] md:w-[240px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
                 <ul className='flex flex-col mt-3 mb-3'>
                     {
                         mainLinks.map(({ icon, name, type }) => {
@@ -146,7 +146,7 @@ const Sidebar = () => {
                     }
                 </ul>
                 <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
-                    <h3 className="mt-3 font-semibold pl-6">
+                    <h3 className="mt-3 font-semibold pl-6 hidden md:block">
                         Explore
                     </h3>
                     {subscriptionLinks.map(({ icon, name, type }, index) => {

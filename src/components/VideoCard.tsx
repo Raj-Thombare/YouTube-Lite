@@ -8,7 +8,7 @@ import VideoLength from '../shared/videoLength';
 const VideoCard = ({ video }: searchResultsProps) => {
     return (
         <Link to={`/video/${video?.videoId}`}>
-            <div className="flex flex-col mb-8 max-w-[340px] md:w-auto">
+            <div className="flex flex-col mb-8 max-w-[340px] h-[268px] md:w-auto">
                 <div className='relative h-48 md:h-40 md:rounded-lg overflow-hidden'>
                     <img className='h-full w-full' src={video?.thumbnails?.[0]?.url} alt={video.title} />
                     {video.lengthSeconds && (

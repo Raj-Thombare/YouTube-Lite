@@ -59,8 +59,6 @@ const defaultState = {
   setSearchResults: (value: []) => { },
   selectedCategory: "New",
   setSelectedCategory: (value: string) => { },
-  mobileMenu: false,
-  setMobileMenu: (value: boolean) => { },
 };
 
 const DataContext = createContext(defaultState);
@@ -70,7 +68,6 @@ export const DataContextProvider = ({ children }: Props) => {
   const [openSidebar, setOpenSidebar] = useState<boolean>(true);
   const [searchResults, setSearchResults] = useState<searchResultsProps[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Home");
-  const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
   useEffect(() => {
     fetchSelectedCategoryData(selectedCategory);
@@ -94,8 +91,6 @@ export const DataContextProvider = ({ children }: Props) => {
         setSearchResults,
         selectedCategory,
         setSelectedCategory,
-        mobileMenu,
-        setMobileMenu,
         openSidebar,
         setOpenSidebar
       }}

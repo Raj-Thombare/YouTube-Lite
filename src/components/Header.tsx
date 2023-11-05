@@ -7,7 +7,6 @@ import ytLogoMobile from "../assets/yt_logo_mobile.png"
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GoSearch } from "react-icons/go";
 import { IoMdMic } from "react-icons/io";
-import { CgClose } from "react-icons/cg";
 import { BsBell } from "react-icons/bs";
 import { RiVideoAddLine } from "react-icons/ri";
 
@@ -18,7 +17,7 @@ const Header = () => {
 
     const [searchQuery, setSearchQuery] = useState<string>("");
 
-    const { loading, mobileMenu, setMobileMenu, openSidebar, setOpenSidebar } = useApiData();
+    const { loading, openSidebar, setOpenSidebar } = useApiData();
 
     const navigate = useNavigate();
 
@@ -30,7 +29,6 @@ const Header = () => {
 
     const mobileMenuToggle = () => {
         setOpenSidebar(!openSidebar)
-        setMobileMenu(!mobileMenu)
     }
 
     const { pathname } = useLocation();
@@ -44,13 +42,7 @@ const Header = () => {
                 {
                     pageName !== 'video' && (
                         <div className='flex md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#0000001a]' onClick={mobileMenuToggle} >
-                            {
-                                mobileMenu ? (
-                                    <CgClose color="black" size={25} />
-                                ) : (
-                                    <RxHamburgerMenu color="black" size={25} />
-                                )
-                            }
+                            <RxHamburgerMenu color="black" size={25} />
                         </div>
                     )
                 }
