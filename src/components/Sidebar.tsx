@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
 
-    const { selectedCategory, setSelectedCategory, mobileMenu } = useApiData();
+    const { selectedCategory, setSelectedCategory, mobileMenu, openSidebar } = useApiData();
 
     const navigate = useNavigate();
 
@@ -38,8 +38,6 @@ const Sidebar = () => {
                 break;
         }
     }
-
-    console.log(selectedCategory)
 
     const mainLinks = [
         {
@@ -135,47 +133,49 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className='hidden md:block w-[240px] h-full absolute md:relative z-10 ml-4 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
-            <ul className='flex flex-col mt-3 mb-3'>
-                {
-                    mainLinks.map(({ icon, name, type }) => {
-                        return <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${selectedCategory === name
-                            ? "bg-[#0000000D] hover:bg-[#1714142d]"
-                            : ""
-                            }`} />
-                    })
-                }
-            </ul>
-            <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
-                <h3 className="mt-3 font-semibold pl-6">
-                    Explore
-                </h3>
-                {subscriptionLinks.map(({ icon, name, type }, index) => {
-                    return (
-                        <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-1' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
-                    );
-                })}
-            </ul>
-            <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
-                {helpLinks.map(({ icon, name, type }, index) => {
-                    return (
-                        <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-3' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
-                    );
-                })}
-            </ul>
-            <ul className="flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
-                {textLinks[0].map((name) => {
-                    return <li key={name}>{name}</li>;
-                })}
-            </ul>
-            <ul className="flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
-                {textLinks[1].map((name) => {
-                    return <li key={name}>{name}</li>;
-                })}
-            </ul>
-            <span className="px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
-            <br />
-        </div >
+        <>
+            {openSidebar && <div className='hidden md:block w-[240px] h-full absolute md:relative z-10 ml-4 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
+                <ul className='flex flex-col mt-3 mb-3'>
+                    {
+                        mainLinks.map(({ icon, name, type }) => {
+                            return <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${selectedCategory === name
+                                ? "bg-[#0000000D] hover:bg-[#1714142d]"
+                                : ""
+                                }`} />
+                        })
+                    }
+                </ul>
+                <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
+                    <h3 className="mt-3 font-semibold pl-6">
+                        Explore
+                    </h3>
+                    {subscriptionLinks.map(({ icon, name, type }, index) => {
+                        return (
+                            <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-1' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
+                        );
+                    })}
+                </ul>
+                <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
+                    {helpLinks.map(({ icon, name, type }, index) => {
+                        return (
+                            <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-3' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
+                        );
+                    })}
+                </ul>
+                <ul className="flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
+                    {textLinks[0].map((name) => {
+                        return <li key={name}>{name}</li>;
+                    })}
+                </ul>
+                <ul className="flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
+                    {textLinks[1].map((name) => {
+                        return <li key={name}>{name}</li>;
+                    })}
+                </ul>
+                <span className="px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
+                <br />
+            </div >}
+        </>
     )
 }
 

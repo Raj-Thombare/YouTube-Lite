@@ -53,6 +53,8 @@ export type searchResultsProps = {
 const defaultState = {
   loading: false,
   setLoading: (value: boolean) => { },
+  openSidebar: true,
+  setOpenSidebar: (value: boolean) => { },
   searchResults: [] as searchResultsProps[],
   setSearchResults: (value: []) => { },
   selectedCategory: "New",
@@ -65,6 +67,7 @@ const DataContext = createContext(defaultState);
 
 export const DataContextProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [openSidebar, setOpenSidebar] = useState<boolean>(true);
   const [searchResults, setSearchResults] = useState<searchResultsProps[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Home");
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
@@ -93,6 +96,8 @@ export const DataContextProvider = ({ children }: Props) => {
         setSelectedCategory,
         mobileMenu,
         setMobileMenu,
+        openSidebar,
+        setOpenSidebar
       }}
     >
       {children}

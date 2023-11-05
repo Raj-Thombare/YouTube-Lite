@@ -18,7 +18,7 @@ const Header = () => {
 
     const [searchQuery, setSearchQuery] = useState<string>("");
 
-    const { loading, mobileMenu, setMobileMenu } = useApiData();
+    const { loading, mobileMenu, setMobileMenu, openSidebar, setOpenSidebar } = useApiData();
 
     const navigate = useNavigate();
 
@@ -29,6 +29,7 @@ const Header = () => {
     }
 
     const mobileMenuToggle = () => {
+        setOpenSidebar(!openSidebar)
         setMobileMenu(!mobileMenu)
     }
 
