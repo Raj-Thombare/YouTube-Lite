@@ -134,7 +134,7 @@ const Sidebar = () => {
 
     return (
         <>
-            {openSidebar && <div className='block w-[100px] md:w-[240px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
+            {openSidebar && <div className='block w-[100px] md:w-[240px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
                 <ul className='flex flex-col mt-3 mb-3'>
                     {
                         mainLinks.map(({ icon, name, type }) => {
@@ -162,17 +162,17 @@ const Sidebar = () => {
                         );
                     })}
                 </ul>
-                <ul className="flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
+                <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
                     {textLinks[0].map((name) => {
                         return <li key={name}>{name}</li>;
                     })}
                 </ul>
-                <ul className="flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
+                <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
                     {textLinks[1].map((name) => {
                         return <li key={name}>{name}</li>;
                     })}
                 </ul>
-                <span className="px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
+                <span className="hidden md:block px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
                 <br />
             </div >}
         </>

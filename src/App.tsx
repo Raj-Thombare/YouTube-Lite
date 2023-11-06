@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import { Header, Sidebar, Feed } from './components';
+import { Header, Feed, SearchResult, VideoDetails } from './components';
 
 import { DataContextProvider } from './context/contextApi'
 
@@ -10,13 +9,16 @@ const App = () => {
     <DataContextProvider>
       <div className='flex flex-col h-full'>
         <Header />
-        <Feed />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route
+            path="/searchResult/:searchQuery"
+            element={<SearchResult />}
+          />
+          <Route path="/video/:id" element={<VideoDetails />} />
+        </Routes>
       </div>
-      {/* <Routes>
-        <Route path="/searchResult/:searchQuery" element={<Home />} />
-        <Route path="/video/:id" element={<Home />} />
-        <Route path="/" element={<Home />} />
-      </Routes> */}
+
     </DataContextProvider>
   )
 }

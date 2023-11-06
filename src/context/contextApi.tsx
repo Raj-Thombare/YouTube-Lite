@@ -71,12 +71,11 @@ export const DataContextProvider = ({ children }: Props) => {
 
   useEffect(() => {
     fetchSelectedCategoryData(selectedCategory);
-  }, [selectedCategory]);
+  }, []);
 
   const fetchSelectedCategoryData = (query: String) => {
     setLoading(true);
     fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
-      console.log(contents);
       setSearchResults(contents)
       setLoading(false);
     });
