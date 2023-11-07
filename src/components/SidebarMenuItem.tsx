@@ -14,7 +14,7 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ name, icon, className
       <div className='flex items-center gap-5 text-2xl'>
         {icon}
         <span className='text-base hidden md:block'>
-          {!openSidebar && name}
+          {openSidebar && name}
         </span>
       </div>
     </li>

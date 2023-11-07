@@ -134,7 +134,7 @@ const Sidebar = () => {
 
     return (
         <>
-            <div className={`block w-[100px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar ${!openSidebar && 'md:w-[240px]'}`}>
+            <div className={`hidden md:block w-[100px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar ${openSidebar && 'md:w-[240px]'}`}>
                 <ul className='flex flex-col mt-3 mb-3'>
                     {
                         mainLinks.map(({ icon, name, type }) => {
@@ -146,7 +146,7 @@ const Sidebar = () => {
                     }
                 </ul>
                 <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
-                    {!openSidebar && <h3 className="mt-3 font-semibold pl-6 hidden md:block">
+                    {openSidebar && <h3 className="mt-3 font-semibold pl-6 hidden md:block">
                         Explore
                     </h3>}
                     {subscriptionLinks.map(({ icon, name, type }, index) => {
@@ -163,7 +163,7 @@ const Sidebar = () => {
                     })}
                 </ul>
                 {
-                    !openSidebar &&
+                    openSidebar &&
                     <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
                         {textLinks[0].map((name) => {
                             return <li key={name}>{name}</li>;
@@ -171,7 +171,7 @@ const Sidebar = () => {
                     </ul>
                 }
                 {
-                    !openSidebar &&
+                    openSidebar &&
                     <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
                         {textLinks[1].map((name) => {
                             return <li key={name}>{name}</li>;
@@ -179,11 +179,43 @@ const Sidebar = () => {
                     </ul>
                 }
                 {
-                    !openSidebar &&
+                    openSidebar &&
                     <span className="hidden md:block px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
                 }
                 <br />
             </div >
+            {/* mobile sidebar */}
+            {
+                !openSidebar && <div className={`block md:hidden w-[100px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar`}>
+                    <ul className='flex flex-col mt-3 mb-3'>
+                        {
+                            mainLinks.map(({ icon, name, type }) => {
+                                return <SidebarMenuItem key={name} name={name} openSidebar={openSidebar} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${selectedCategory === name
+                                    ? "bg-[#0000000D] hover:bg-[#1714142d]"
+                                    : ""
+                                    }`} />
+                            })
+                        }
+                    </ul>
+                    <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
+                        {openSidebar && <h3 className="mt-3 font-semibold pl-6 hidden md:block">
+                            Explore
+                        </h3>}
+                        {subscriptionLinks.map(({ icon, name, type }, index) => {
+                            return (
+                                <SidebarMenuItem key={name} name={name} openSidebar={openSidebar} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-1' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
+                            );
+                        })}
+                    </ul>
+                    <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
+                        {helpLinks.map(({ icon, name, type }, index) => {
+                            return (
+                                <SidebarMenuItem key={name} name={name} openSidebar={openSidebar} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-3' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
+                            );
+                        })}
+                    </ul>
+                </div >
+            }
         </>
     )
 }
