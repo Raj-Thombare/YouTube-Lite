@@ -3,16 +3,20 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
+import { GrView } from "react-icons/gr";
 import { abbreviateNumber } from "js-abbreviation-number";
 
 import { fetchDataFromApi } from "../utils/api";
 import { useApiData } from "../context/contextApi";
 
 import { VideoData } from "../utils/types";
+import SuggestionVideoCard from "./SuggestionVideoCard";
+
+import { SearchResultsProps } from "../utils/types";
 
 const VideoDetails = () => {
   const [video, setVideo] = useState<VideoData>();
-  const [relatedVideos, setRelatedVideos] = useState();
+  const [relatedVideos, setRelatedVideos] = useState<SearchResultsProps[]>([]);
   const { id } = useParams();
   const { setLoading } = useApiData();
 
@@ -30,8 +34,8 @@ const VideoDetails = () => {
     const fetchRelatedVideosData = () => {
       setLoading(true);
       fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-        console.log(res);
-        setRelatedVideos(res);
+        console.log(res.contents);
+        setRelatedVideos(res.contents);
         setLoading(false);
       });
     };
@@ -90,7 +94,7 @@ const VideoDetails = () => {
                 </span>
               </div>
               <div className="flex items-center bg-[#606060]/[0.1] justify-center h-11 px-6 rounded-3xl ml-4">
-                <AiOutlineLike className="text-xl mr-2" />
+                <GrView className="text-xl mr-2" />
                 <span className="text-sm">
                   {video?.stats?.views !== undefined
                     ? `${abbreviateNumber(video.stats.views)} Views`
@@ -99,6 +103,18 @@ const VideoDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
+          {relatedVideos?.map((item: SearchResultsProps, index: number) => {
+            if (item?.type !== "video") return false;
+            console.log('item: ', item)
+            return (
+              <SuggestionVideoCard
+                key={index}
+                video={item?.video}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

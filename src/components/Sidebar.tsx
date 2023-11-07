@@ -134,11 +134,11 @@ const Sidebar = () => {
 
     return (
         <>
-            {openSidebar && <div className='block w-[100px] md:w-[240px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar'>
+            <div className={`block w-[100px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar ${!openSidebar && 'md:w-[240px]'}`}>
                 <ul className='flex flex-col mt-3 mb-3'>
                     {
                         mainLinks.map(({ icon, name, type }) => {
-                            return <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${selectedCategory === name
+                            return <SidebarMenuItem key={name} name={name} openSidebar={openSidebar} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${selectedCategory === name
                                 ? "bg-[#0000000D] hover:bg-[#1714142d]"
                                 : ""
                                 }`} />
@@ -146,35 +146,44 @@ const Sidebar = () => {
                     }
                 </ul>
                 <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
-                    <h3 className="mt-3 font-semibold pl-6 hidden md:block">
+                    {!openSidebar && <h3 className="mt-3 font-semibold pl-6 hidden md:block">
                         Explore
-                    </h3>
+                    </h3>}
                     {subscriptionLinks.map(({ icon, name, type }, index) => {
                         return (
-                            <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-1' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
+                            <SidebarMenuItem key={name} name={name} openSidebar={openSidebar} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-1' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
                         );
                     })}
                 </ul>
                 <ul className="flex flex-col mt-3 mb-3 border-t-[1px] border-[#cccccc]">
                     {helpLinks.map(({ icon, name, type }, index) => {
                         return (
-                            <SidebarMenuItem key={name} name={name} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-3' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
+                            <SidebarMenuItem key={name} name={name} openSidebar={openSidebar} icon={icon} action={() => { selectCategoryHandler(name, type) }} className={`${index === 0 ? 'mt-3' : ''} ${selectedCategory === name ? 'bg-[#0000000D] hover:bg-[#1714142d]' : ''}`} />
                         );
                     })}
                 </ul>
-                <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
-                    {textLinks[0].map((name) => {
-                        return <li key={name}>{name}</li>;
-                    })}
-                </ul>
-                <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
-                    {textLinks[1].map((name) => {
-                        return <li key={name}>{name}</li>;
-                    })}
-                </ul>
-                <span className="hidden md:block px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
+                {
+                    !openSidebar &&
+                    <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060] border-t-[1px] border-[#cccccc]">
+                        {textLinks[0].map((name) => {
+                            return <li key={name}>{name}</li>;
+                        })}
+                    </ul>
+                }
+                {
+                    !openSidebar &&
+                    <ul className="hidden md:flex gap-2 flex-wrap text-sm font-medium p-4 text-[#606060]">
+                        {textLinks[1].map((name) => {
+                            return <li key={name}>{name}</li>;
+                        })}
+                    </ul>
+                }
+                {
+                    !openSidebar &&
+                    <span className="hidden md:block px-4 text-sm font-normal text-[#606060]">&copy; 2023 Google</span>
+                }
                 <br />
-            </div >}
+            </div >
         </>
     )
 }

@@ -1,4 +1,4 @@
-export interface VideoData {
+export type VideoData = {
   author: {
     avatar: {
       height: number;
@@ -80,4 +80,79 @@ export interface VideoData {
   }[];
   title: string;
   videoId: string;
-}
+};
+
+//contextApi.tsx
+
+type AvatarProps = {
+  height: number;
+  url: string;
+  width: number;
+};
+
+type ThumbnailsProps = {
+  height: number;
+  url: string;
+  width: number;
+};
+
+type MovingThumbnailsProps = {
+  height: number;
+  url: string;
+  width: number;
+};
+
+export type VideoProps = {
+  videoId: string;
+  author: {
+    avatar: AvatarProps[];
+    badges?: [];
+    canonicalBaseUrl: string;
+    channelId: string;
+    title: string;
+  };
+  descriptionSnippet: string;
+  isLiveNow: boolean;
+  lengthSeconds: number;
+  publishedTimeText: string;
+  title: string;
+  badges?: [];
+  stats: {
+    views: number;
+  };
+  thumbnails: ThumbnailsProps[];
+  movingThumbnails: MovingThumbnailsProps[];
+};
+
+export type SearchResultsProps = {
+  type?: string;
+  video: VideoProps;
+};
+
+// SuggestionVideo.tsx
+
+type Badge = {
+  text: string;
+  type: string;
+};
+
+type Author = {
+  avatar: AvatarProps[];
+  badges: Badge[];
+  title: string;
+};
+
+type Stats = {
+  views: number;
+};
+
+export type SuggestionVideoProps = {
+  author: Author;
+  isLiveNow: boolean;
+  lengthSeconds: number;
+  publishedTimeText: string;
+  stats: Stats;
+  thumbnails: ThumbnailsProps[];
+  title: string;
+  videoId: string;
+};

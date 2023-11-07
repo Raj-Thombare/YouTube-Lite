@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
 import { abbreviateNumber } from "js-abbreviation-number";
-import { searchResultsProps } from '../context/contextApi';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
+
+import { SearchResultsProps } from '../utils/types';
 
 import VideoLength from '../shared/videoLength';
 
-const VideoCard = ({ video }: searchResultsProps) => {
+const VideoCard = ({ video }: SearchResultsProps) => {
     return (
         <Link to={`/video/${video?.videoId}`}>
             <div className="flex flex-col mb-8 max-w-[340px] h-[268px] md:w-auto">
                 <div className='relative h-48 md:h-40 md:rounded-lg overflow-hidden'>
                     <img className='h-full w-full' src={video?.thumbnails?.[0]?.url} alt={video.title} />
                     {video.lengthSeconds && (
-                        <VideoLength time={video?.lengthSeconds} />
+                        <VideoLength time={video?.lengthSeconds} className='text-sm' />
                     )}
                 </div>
                 <div className='flex mt-3'>
