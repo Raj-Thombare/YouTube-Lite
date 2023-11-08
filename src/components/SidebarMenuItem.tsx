@@ -16,6 +16,9 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ name, icon, className
         <span className='text-base hidden md:block'>
           {openSidebar && name}
         </span>
+        <span className='text-base block md:hidden'>
+          {name}
+        </span>
       </div>
     </li>
   )

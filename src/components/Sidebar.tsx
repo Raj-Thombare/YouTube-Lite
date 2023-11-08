@@ -186,7 +186,7 @@ const Sidebar = () => {
             </div >
             {/* mobile sidebar */}
             {
-                !openSidebar && <div className={`block md:hidden w-[100px] h-full absolute md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar`}>
+                !openSidebar && <div className={`block md:hidden w-[240px] h-full fixed md:relative bg-white z-10 ml-0 md:ml-4 pl-2 md:pl-0 pr-4 overflow-y-auto translate-x-[240] md:translate-x-0 transition-all pb-8 sidebar`}>
                     <ul className='flex flex-col mt-3 mb-3'>
                         {
                             mainLinks.map(({ icon, name, type }) => {

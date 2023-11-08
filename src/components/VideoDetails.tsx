@@ -54,6 +54,7 @@ const VideoDetails = () => {
               controls
               width="100%"
               height="100%"
+              playing={true}
             />
           </div>
           <div className="text-[#0F0F0F] font-bold text-sm md:text-xl mt-4 line-clamp-2">
@@ -107,7 +108,6 @@ const VideoDetails = () => {
         <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
           {relatedVideos?.map((item: SearchResultsProps, index: number) => {
             if (item?.type !== "video") return false;
-            console.log('item: ', item)
             return (
               <SuggestionVideoCard
                 key={index}

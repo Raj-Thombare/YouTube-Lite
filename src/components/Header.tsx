@@ -40,13 +40,12 @@ const Header = () => {
 
             <div className="flex h-5 items-center">
                 {
-                    pageName !== 'video' && (
-                        <div className='flex md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#0000001a]' onClick={mobileMenuToggle} >
-                            <RxHamburgerMenu color="black" size={25} />
-                        </div>
-                    )
+                    pageName !== 'video' &&
+                    <div className='flex md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#0000001a]' onClick={mobileMenuToggle} >
+                        <RxHamburgerMenu color="black" size={25} />
+                    </div>
                 }
-                <Link to="/" className='ml-3 md:ml-0 flex gap-1 items-center justify-center'>
+                <Link to="/" className='ml-0 md:ml-0 flex gap-1 items-center justify-center'>
                     <img
                         className="h-5 hidden md:flex"
                         src={ytLogo}
@@ -70,7 +69,7 @@ const Header = () => {
                         </div>
                         <input
                             type="text"
-                            className="bg-transparent outline-none pr-5 pl-5 md:pl-0 w-48 md:group-focus-within:pl-0 md:w-64 lg:w-[500px]"
+                            className="bg-transparent outline-none pr-5 pl-5 md:pl-0 w-40 md:group-focus-within:pl-0 md:w-64 lg:w-[500px]"
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onKeyUp={searchQueryHandler}
                             placeholder="Search"
@@ -89,11 +88,11 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className="hidden md:flex gap-3 items-center text-xl">
-                <div className="text-xl p-3 rounded-full hover:bg-[#0000001a] cursor-pointer">
+            <div className="md:flex gap-3 items-center text-xl">
+                <div className="hidden md:block text-xl p-3 rounded-full hover:bg-[#0000001a] cursor-pointer">
                     <RiVideoAddLine style={{ fill: 'black' }} />
                 </div>
-                <div className="text-xl p-3 rounded-full hover:bg-[#0000001a] cursor-pointer">
+                <div className="hidden md:block text-xl p-3 rounded-full hover:bg-[#0000001a] cursor-pointer">
                     <div className="relative">
                         <BsBell style={{ fill: 'black' }} />
                         <span className="absolute bottom-2 left-2 text-xs bg-red-600 rounded-full px-1 text-white">

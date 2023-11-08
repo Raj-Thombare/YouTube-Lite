@@ -11,7 +11,7 @@ const SuggestionVideoCard = ({ video }: SearchResultsProps) => {
     return (
         <Link to={`/video/${video?.videoId}`}>
             <div className="flex mb-3">
-                <div className='relative h-24 lg:h-24 min-w-w[168px] lg:w-32 lg:min-w-[128px] xl:w-40 xl:min-w-[168px] rounded-xl overflow-hidden'>
+                <div className='relative h-24 lg:h-20 xl:h-24 w-40 min-w-[168px] lg:w-32 lg:min-w-[128px] xl:w-40 xl:min-w-[168px] rounded-xl overflow-hidden'>
                     <img className='h-full w-full' src={video?.thumbnails?.[0]?.url} alt={video.title} />
                     {video.lengthSeconds && (
                         <VideoLength className="text-xs" time={video?.lengthSeconds} />
@@ -21,7 +21,7 @@ const SuggestionVideoCard = ({ video }: SearchResultsProps) => {
                     <span className="text-base lg:text-sm xl:text-sm font-bold line-clamp-2">
                         {video.title}
                     </span>
-                    <span className="text-sm lg:text-[10px] xl:text-[12px] mt-2 text-[#606060] flex items-center">
+                    <span className="text-sm lg:text-[10px] xl:text-[12px] mt-1 text-[#606060] flex items-center">
                         {video?.author?.title}
 
                         {video?.author?.badges && video?.author?.badges.length > 0 && (
